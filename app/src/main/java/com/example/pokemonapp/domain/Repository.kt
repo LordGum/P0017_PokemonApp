@@ -1,8 +1,11 @@
 package com.example.pokemonapp.domain
 
+import com.example.pokemonapp.domain.entities.Pokemon
+import com.example.pokemonapp.domain.entities.PokemonContainer
+
 interface Repository {
 
-    fun getList(): List<Pokemon>
+    suspend fun getList(): List<PokemonContainer>
 
-    fun getPokemonInfo(id: Int): Pokemon
+    suspend fun getPokemonInfo(id: Int): Pokemon
 }

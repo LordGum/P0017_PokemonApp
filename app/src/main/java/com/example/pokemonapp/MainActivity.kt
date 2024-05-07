@@ -1,16 +1,14 @@
 package com.example.pokemonapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.example.pokemonapp.data.RepositoryImpl
 import com.example.pokemonapp.ui.theme.PokemonAppTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +18,18 @@ class MainActivity : ComponentActivity() {
 
             }
         }
+        test()
     }
-}
 
+    fun test () {
+        val repositoryImpl = RepositoryImpl()
+        val scope = CoroutineScope(Dispatchers.IO)
+        scope.launch {
+            val list = repositoryImpl.getList()
+            val item = repositoryImpl.getPokemonInfo(1).stats[0].name
+            Log.d("MATAG", "response: ${item}")
+        }
+
+    }
+
+}
