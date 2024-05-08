@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
             val list = repositoryImpl.getList()
-            val item = repositoryImpl.getPokemonInfo(1).stats[0].name
+            val item = list[0].name
             Log.d("MATAG", "response: ${item}")
         }
 

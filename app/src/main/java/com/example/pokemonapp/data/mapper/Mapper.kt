@@ -1,20 +1,10 @@
 package com.example.pokemonapp.data.mapper
 
-import com.example.pokemonapp.data.network.model.PokemonContainerDtn
 import com.example.pokemonapp.data.network.model.PokemonDtn
 import com.example.pokemonapp.data.network.model.StatsDtn
 import com.example.pokemonapp.data.network.model.TypesDnt
 import com.example.pokemonapp.domain.entities.Pokemon
-import com.example.pokemonapp.domain.entities.PokemonContainer
 import com.example.pokemonapp.domain.entities.Stat
-
-fun PokemonContainerDtn.toEntity(): PokemonContainer {
-    return PokemonContainer(this.name, this.url)
-}
-
-fun List<PokemonContainerDtn>.toEntityList(): List<PokemonContainer> {
-    return this.map { it.toEntity() }
-}
 
 fun PokemonDtn.toEntity(): Pokemon {
     return Pokemon(
