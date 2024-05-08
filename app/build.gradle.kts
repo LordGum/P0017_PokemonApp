@@ -83,5 +83,9 @@ dependencies {
     //coil
     implementation("io.coil-kt:coil-compose:2.1.0")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
+    //observeAsState
+    implementation("androidx.compose.runtime:runtime-livedata:1.0.0")
 }

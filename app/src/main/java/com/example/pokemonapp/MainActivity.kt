@@ -1,35 +1,21 @@
 package com.example.pokemonapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.pokemonapp.data.RepositoryImpl
+import androidx.lifecycle.ViewModelProvider
+import com.example.pokemonapp.presentation.MainScreen
+import com.example.pokemonapp.presentation.MainViewModel
 import com.example.pokemonapp.ui.theme.PokemonAppTheme
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             PokemonAppTheme {
-
+                val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+                MainScreen(viewModel)
             }
         }
-        test()
     }
-
-    fun test () {
-        val repositoryImpl = RepositoryImpl()
-        val scope = CoroutineScope(Dispatchers.IO)
-        scope.launch {
-            val list = repositoryImpl.getList()
-            val item = list[0].name
-            Log.d("MATAG", "response: ${item}")
-        }
-
-    }
-
 }
