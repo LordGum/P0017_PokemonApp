@@ -143,21 +143,3 @@ fun ShowError(exception: Exception) {
     }
 }
 
-//@Preview
-//@Composable
-//fun ProjectThemeLight() {
-//    PokemonAppTheme(
-//        darkTheme = false
-//    ){
-//        showLoading()
-//    }
-//}
-//@Preview
-//@Composable
-//fun ProjectThemeDark() {
-//    PokemonAppTheme(
-//        darkTheme = true
-//    ){
-//        showLoading()
-//    }
-//}

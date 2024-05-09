@@ -10,8 +10,8 @@ fun PokemonDtn.toEntity(): Pokemon {
     return Pokemon(
         id = this.id,
         name = this.name,
-        weight = this.weight,
-        height = this.height,
+        weight = this.weight.toString() + " kg",
+        height = this.height.toString() + " m",
         stats = this.stats.toEntityList1(),
         imageUrl = this.spitesDnt.other.home.frontDefault,
         types = this.types.toEntityList()
@@ -30,7 +30,7 @@ fun List<StatsDtn>.toEntityList1(): List<Stat> {
 }
 
 fun TypesDnt.toEntity(): String {
-    return this.type.name
+    return this.type.name.uppercase()
 }
 
 fun ArrayList<TypesDnt>.toEntityList(): ArrayList<String> {
