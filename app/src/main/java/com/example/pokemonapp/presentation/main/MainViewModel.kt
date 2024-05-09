@@ -1,4 +1,4 @@
-package com.example.pokemonapp.presentation
+package com.example.pokemonapp.presentation.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData

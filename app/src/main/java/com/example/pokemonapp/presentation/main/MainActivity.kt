@@ -1,4 +1,4 @@
-package com.example.pokemonapp.presentation
+package com.example.pokemonapp.presentation.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

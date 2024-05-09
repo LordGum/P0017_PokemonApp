@@ -1,4 +1,4 @@
-package com.example.pokemonapp.presentation
+package com.example.pokemonapp.presentation.main
 
 import com.example.pokemonapp.domain.entities.Pokemon
 
