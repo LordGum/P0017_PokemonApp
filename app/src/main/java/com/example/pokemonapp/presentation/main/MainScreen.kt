@@ -30,14 +30,17 @@ import coil.compose.AsyncImage
 import com.example.pokemonapp.domain.entities.Pokemon
 
 @Composable
-fun MainScreen(viewModel: MainViewModel) {
+fun MainScreen(
+    viewModel: MainViewModel,
+    onPokemonClickListener: (Pokemon) -> Unit
+) {
 
     val state = viewModel.pokemonList.observeAsState(MainScreenState.Initial)
 
     when (val currentState = state.value) {
         is MainScreenState.Initial -> ShowInitial()
         is MainScreenState.Loading -> ShowLoading()
-        is MainScreenState.Success -> ShowList(currentState.posts)
+        is MainScreenState.Success -> ShowList(currentState.posts, onPokemonClickListener)
         is MainScreenState.Error -> ShowError(currentState.exception)
     }
 }
@@ -45,10 +48,13 @@ fun MainScreen(viewModel: MainViewModel) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonCard(pokemon: Pokemon) {
+fun PokemonCard(
+    pokemon: Pokemon,
+    onPokemonClickListener: (Pokemon) -> Unit
+) {
     ElevatedCard(
         modifier = Modifier.padding(8.dp),
-        onClick = { /* Do something */ }
+        onClick = { onPokemonClickListener(pokemon) }
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
@@ -100,7 +106,10 @@ fun ShowLoading() {
 }
 
 @Composable
-fun ShowList(list: List<Pokemon>) {
+fun ShowList(
+    list: List<Pokemon>,
+    onPokemonClickListener: (Pokemon) -> Unit
+) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -120,7 +129,7 @@ fun ShowList(list: List<Pokemon>) {
             modifier = Modifier.padding(4.dp)
         ) {
             items(list.size) { index ->
-                PokemonCard(pokemon = list[index])
+                PokemonCard(pokemon = list[index], onPokemonClickListener)
             }
         }
     }

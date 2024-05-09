@@ -88,4 +88,7 @@ dependencies {
 
     //observeAsState
     implementation("androidx.compose.runtime:runtime-livedata:1.0.0")
+
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 }
