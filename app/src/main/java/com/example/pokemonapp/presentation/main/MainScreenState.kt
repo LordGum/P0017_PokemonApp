@@ -8,7 +8,10 @@ sealed class MainScreenState {
 
     object Loading: MainScreenState()
 
-    data class Success(val posts: List<Pokemon>): MainScreenState()
+    data class Success(
+        val posts: List<Pokemon>,
+        val nextDataIsLoading: Boolean = false
+    ): MainScreenState()
 
     data class Error(val exception: Exception): MainScreenState()
 }

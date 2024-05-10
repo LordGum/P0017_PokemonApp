@@ -7,8 +7,8 @@ import com.example.pokemonapp.domain.entities.Pokemon
 
 class RepositoryImpl: Repository {
     private val apiService = ApiFactory.apiService
-    override suspend fun getList(): List<Pokemon> {
-        val responseList = apiService.loadList(0).responseList
+    override suspend fun getList(offset: Int): List<Pokemon> {
+        val responseList = apiService.loadList(offset * LIMIT_PARAMETER).responseList
         return responseList.map {getPokemonInfo( trimUrlId(it.url) )}
     }
 
@@ -19,5 +19,9 @@ class RepositoryImpl: Repository {
     private fun trimUrlId(url: String): Int {
         val lastIndex = url.length - 1
         return url.substring(34, lastIndex).toInt()
+    }
+
+    companion object {
+        private const val LIMIT_PARAMETER = 20
     }
 }

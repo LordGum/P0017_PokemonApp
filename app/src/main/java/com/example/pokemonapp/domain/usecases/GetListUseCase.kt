@@ -5,5 +5,5 @@ import com.example.pokemonapp.domain.Repository
 class GetListUseCase(
     private val repository: Repository
 ) {
-    suspend operator fun invoke() = repository.getList()
+    suspend operator fun invoke(offset: Int) = repository.getList(offset)
 }
